@@ -5,7 +5,11 @@ FROM ubuntu_t1
 
 WORKDIR /root
 
-# RUN apt update
+RUN apt update
+RUN apt install -y \
+    clangd 
+
+RUN git clone https://github.com/neovim/nvim-lspconfig ~/.config/nvim/pack/nvim/start/nvim-lspconfig
 
 COPY Config/Custom1/nvim /root/.config/nvim
 RUN LD_LIBRARY_PATH="/usr/local/lib::$LD_LIBRARY_PATH" \
