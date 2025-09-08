@@ -1,0 +1,12 @@
+# I called the image create with Dockerfile
+# ubuntu_t1. Change the directive below with 
+# the proper name you have given.
+FROM ubuntu_t1
+
+WORKDIR /root
+
+# RUN apt update
+
+COPY Config/Custom1/nvim /root/.config/nvim
+RUN LD_LIBRARY_PATH="/usr/local/lib::$LD_LIBRARY_PATH" \
+    nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
