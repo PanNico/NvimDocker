@@ -11,6 +11,7 @@ RUN apt install -y \
 
 RUN git clone https://github.com/neovim/nvim-lspconfig ~/.config/nvim/pack/nvim/start/nvim-lspconfig
 
+RUN echo ""
 COPY Config/Custom1/nvim /root/.config/nvim
-RUN LD_LIBRARY_PATH="/usr/local/lib::$LD_LIBRARY_PATH" \
+RUN LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH" \
     nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
