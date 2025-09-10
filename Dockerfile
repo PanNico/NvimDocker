@@ -43,12 +43,18 @@ RUN git clone https://github.com/jesseduffield/lazygit.git
 RUN cd lazygit; git checkout v0.55.0; \
     export GOROOT="/opt/go"; \
     export PATH="$GOROOT/bin:$PATH"; \
-    GOPATH=/usr/local/bin CGO_ENABLED=0 GOOS=linux go install
+    GOBIN=/usr/local/bin CGO_ENABLED=0 GOOS=linux go install
 
-RUN git clone https://github.com/sysfce2/libutf8proc.git
-RUN cd libutf8proc; git checkout 72918b954b4a85c00106842b073a4e5178209f95; \
+#RUN git clone https://github.com/sysfce2/libutf8proc.git
+#RUN cd libutf8proc; git checkout 72918b954b4a85c00106842b073a4e5178209f95; \
+#    mkdir build; cd build; \
+#    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/usr/local ..; make -j6; make install
+
+RUN git clone https://github.com/JuliaStrings/utf8proc.git
+RUN cd utf8proc; \
     mkdir build; cd build; \
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/usr/local ..; make -j6; make install
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/usr/local ..; \
+    make -j6; make install
 
 RUN git clone https://github.com/neovim/neovim.git
 RUN cd neovim; git checkout v0.11.4; \
