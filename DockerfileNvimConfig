@@ -20,3 +20,7 @@ RUN LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH" \
 
 RUN rm -rf /root/*
 COPY MyScripts /root/MyScripts
+
+RUN git config --global user.email "pancheri.nicola@gmail.com"
+RUN git config --global user.name "Nicola Pancheri"
+
