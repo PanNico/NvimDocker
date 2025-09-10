@@ -1,4 +1,9 @@
 require("config.packer")
+require("user.keymaps")
+require("user.options")
+require("user.colorscheme")
+require("user.bottomline")
+require("telescope")
 
 require("nvim-treesitter.configs").setup({
   -- A list of parser names, or "all" (the listed parsers MUST always be installed)
@@ -57,3 +62,48 @@ require("nvim-treesitter.configs").setup({
 })
 
 vim.lsp.enable('clangd')
+
+require('nvim-tree').setup({
+  sort_by = "case_sensitive",
+  update_cwd = true,
+  view = {
+    width = 30,
+  },
+  renderer = {
+    group_empty = true
+  },
+  filters = {
+    dotfiles = true,
+  },
+  actions = {
+    change_dir = {
+      global = true
+    }
+  }
+})
+
+require("scrollbar").setup()
+
+require("toggleterm").setup({
+  size = 20,
+  open_mapping = [[<c-\>]],
+  hide_numbers = true,
+  shade_filetypes = {},
+  shade_terminals = true,
+  shading_factor = 22,
+  start_in_insert = true,
+  insert_mappings = true,
+  persist_size = true,
+  direction ="float",
+  close_on_exit = true,
+  shell = "bash",
+  float_opts = {
+    border = "curved",
+    winblend  = 0,
+    highlights = {
+      border = "Normal",
+      background = "Normal"
+    },
+  },
+})
+
