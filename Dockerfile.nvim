@@ -1,5 +1,9 @@
 # Builds on top of the base image created with Dockerfile
-FROM ubuntu_t1
+ARG BASE_IMAGE=ubuntu_t1
+FROM ${BASE_IMAGE}
+
+ARG GIT_EMAIL="pancheri.nicola@gmail.com"
+ARG GIT_NAME="Nicola Pancheri"
 
 WORKDIR /root
 
@@ -20,8 +24,6 @@ RUN ${INSTALL_PREFIX}/bin/nvim --headless +Lazy! sync +qa || true
 COPY MyScripts /root/scripts
 
 # Git configuration
-ARG GIT_EMAIL="pancheri.nicola@gmail.com"
-ARG GIT_NAME="Nicola Pancheri"
 RUN git config --global user.email "${GIT_EMAIL}" \
     && git config --global user.name "${GIT_NAME}"
 

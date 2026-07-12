@@ -1,4 +1,6 @@
--- Config/Basic/nvim/lua/config/lazy.lua
+-- /root/.config/nvim/lua/system/lazy.lua
+-- lazy.nvim bootstrap and setup
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 -- Bootstrap lazy.nvim if not present
@@ -15,7 +17,7 @@ end
 -- Prepend lazy path to runtimepath
 vim.opt.rtp:prepend(lazypath)
 
--- Get plugins from user/plugins.lua
+-- Get plugins spec
 local plugins_spec = require("user.plugins")
 
 -- Setup lazy.nvim

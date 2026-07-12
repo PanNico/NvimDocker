@@ -18,11 +18,14 @@ ENV PATH="${GOROOT}/bin:${GOPATH}/bin:${INSTALL_PREFIX}/bin:/usr/local/sbin:/usr
 WORKDIR /root
 
 # System packages
+
 RUN apt update && apt install -y \
     build-essential cmake python3 git pkg-config wget curl clang \
     fzf lua5.1 luarocks libuv1-dev lua-luv-dev lua-lpeg-dev \
     libunibilium-dev libluajit-5.1-dev lua-bitop-dev \
     silversearcher-ag ripgrep fd-find \
+    xclip xsel vim-tiny tree\
+    gdb \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Go

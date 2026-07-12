@@ -1,19 +1,9 @@
--- Add your plugins here
+-- /root/.config/nvim/lua/user/plugins.lua
+-- Plugin specification table for lazy.nvim
+-- Add plugins here using declarative syntax
 
 return {
-  -- lazy.nvim itself is already bootstrapped, don't include here
-  
-  -- Example plugins (uncomment and customize):
+  -- Examples:
   -- { "nvim-lua/plenary.nvim" },
   -- { "neovim/nvim-lspconfig" },
-  -- { "preservim/nerdtree" },
-  
-  -- With configuration example:
-  -- {
-  --   "dense-analysis/ale",
-  --   event = "InsertEnter",
-  --   config = function()
-  --     vim.g.ale_enable = true
-  --   end
-  -- }
 }

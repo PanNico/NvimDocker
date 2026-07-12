@@ -11,14 +11,8 @@ vim.opt.smartindent = true
 -- the number of spaces inserted for each indentation
 vim.opt.shiftwidth = 2
 
--- allow neovim to access the system clipboard
-vim.opt.clipboard = "unnamedplus"
-
 -- highlight all matches on previous search pattern
 vim.opt.hlsearch = true
-
--- allow the mouse to be used in neovim
-vim.opt.mouse = "a"
 
 -- insert 2 spaces for a tab
 vim.opt.tabstop = 2
