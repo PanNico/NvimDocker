@@ -1,28 +1,23 @@
 # Builds on top of the base image created with Dockerfile
-# Change the image name below to match yours
 FROM ubuntu_t1
 
 WORKDIR /root
 
 # Additional system packages
-RUN apt update && apt install -y \
-    clangd clang-format \
+RUN apt update && apt install -y clangd clang-format \
     && rm -rf /var/lib/apt/lists/*
 
-# LSP config and linter plugins
-RUN git clone --depth 1 https://github.com/neovim/nvim-lspconfig.git \
-    ~/.config/nvim/pack/nvim/start/nvim-lspconfig
-RUN git clone --depth 1 https://github.com/dense-analysis/ale.git \
-    ~/.local/share/nvim/site/pack/git-plugins/start/ale
-
-# Custom Neovim configuration (overrides base config)
+# Custom Neovim configuration (overrides base config, preserves lazy.nvim)
 COPY Config/Custom1/nvim /root/.config/nvim
 
-# Install plugins
-RUN nvim --headless +PackerSync +qa || true
+# Ensure plugins directory exists for lazy spec files
+RUN mkdir -p /root/.config/nvim/lua/plugins
+
+# Re-sync plugins with updated configuration from user's spec
+RUN ${INSTALL_PREFIX}/bin/nvim --headless +Lazy! sync +qa || true
 
 # Personal scripts
-COPY MyScripts /root/MyScripts
+COPY MyScripts /root/scripts
 
 # Git configuration
 ARG GIT_EMAIL="pancheri.nicola@gmail.com"
