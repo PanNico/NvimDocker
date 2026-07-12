@@ -1,15 +1,19 @@
 FROM ubuntu:24.04
 
-# Reduce output and clean cache
+# Reduce output
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Central variable for local installations
 ENV INSTALL_PREFIX="/usr/local"
 ENV GOROOT="/opt/go"
 ENV GOPATH="/root/go"
-ENV PATH="${GOROOT}/bin:${GOPATH}/bin:${INSTALL_PREFIX}/bin:${PATH}"
-ENV LD_LIBRARY_PATH="${INSTALL_PREFIX}/lib:${LD_LIBRARY_PATH}"
-ENV PKG_CONFIG_PATH="${INSTALL_PREFIX}/lib/pkgconfig:${PKG_CONFIG_PATH}"
+
+# Library paths (includes standard system and multiarch directories)
+ENV LD_LIBRARY_PATH="${INSTALL_PREFIX}/lib:/usr/lib:/lib:/usr/lib/x86_64-linux-gnu:/lib/x86_64-linux-gnu"
+ENV PKG_CONFIG_PATH="${INSTALL_PREFIX}/lib/pkgconfig:${INSTALL_PREFIX}/share/pkgconfig:/usr/lib/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig"
+
+# Binary paths
+ENV PATH="${GOROOT}/bin:${GOPATH}/bin:${INSTALL_PREFIX}/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 WORKDIR /root
 
@@ -55,11 +59,10 @@ RUN git clone --depth 1 --branch v0.11.4 https://github.com/neovim/neovim.git \
 RUN mkdir -p /root/.local/share/nvim/site/pack/lazy/opt/lazy \
     && git clone --depth 1 https://github.com/folke/lazy.nvim.git \
        /root/.local/share/nvim/site/pack/lazy/opt/lazy
-
-# Initial Neovim configuration with lazy.nvim setup (minimal, will be overridden)
+# Initial Neovim configuration with lazy.nvim setup
 COPY Config/Basic/nvim /root/.config/nvim
 
-# Build plugins (basic sync with default spec)
+# Sync plugins
 RUN ${INSTALL_PREFIX}/bin/nvim --headless +Lazy! sync +qa || true
 
 CMD ["/bin/bash"]
