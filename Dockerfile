@@ -55,10 +55,6 @@ RUN git clone --depth 1 --branch v0.11.4 https://github.com/neovim/neovim.git \
     && cmake --build build -j$(nproc) && cmake --install build \
     && cd .. && rm -rf neovim
 
-# Bootstrap lazy.nvim plugin manager (infrastructure layer)
-RUN mkdir -p /root/.local/share/nvim/site/pack/lazy/opt/lazy \
-    && git clone --depth 1 https://github.com/folke/lazy.nvim.git \
-       /root/.local/share/nvim/site/pack/lazy/opt/lazy
 # Initial Neovim configuration with lazy.nvim setup
 COPY Config/Basic/nvim /root/.config/nvim
 
