@@ -7,6 +7,7 @@ echo "Configuring X11 access for Docker containers..."
 xhost +local:docker
 
 docker run -it --rm \
+  -v "${HOME}:${HOME}" \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -e DISPLAY=$DISPLAY \
   nvim_test_t2 
