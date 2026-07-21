@@ -27,7 +27,7 @@ Map("n", "<C-right>", "<C-w>right")
 
 -- Plugin shortcuts
 Map("n", "<C-a>", ":NvimTreeOpen<CR>")
-Map("n", "gg", ":LazyGit<CR>")
+Map("n", "<C-g>", ":LazyGit<CR>")
 
 -- Telescope maps
 local builtin = require("telescope.builtin")
@@ -42,6 +42,8 @@ Map("n", "<C-.>", ":ToggleTerm direction=vertical<CR>")
 Map("n", "<C-,>", ":ToggleTerm direction=tab<CR>")
 Map("n", "<C-f>", ":ToggleTerm direction=float<CR>")
 Map("n", "<S-T>", ":ToggleTermSelect<CR>")
+
+Map("n", "<C-d>", ":lua vim.diagnostic.open_float()<CR>")
 
 -- Debug/test map
 Map("n", "<C-'>", function() print("ciao") end)
