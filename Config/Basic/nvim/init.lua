@@ -1,4 +1,3 @@
--- /root/.config/nvim/init.lua
 -- Main entry point — coordinator
 
 -- Load system infrastructure options (always)

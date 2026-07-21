@@ -1,4 +1,3 @@
--- /root/.config/nvim/lua/user/keymaps.lua
 -- Key mappings helper function
 
 local function Map(mode, lhs, rhs, opts)

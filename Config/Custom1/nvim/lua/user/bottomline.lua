@@ -1,4 +1,3 @@
--- /root/.config/nvim/lua/user/bottomline.lua
 -- Feline statusline configuration
 
 local line_ok, feline = pcall(require, "feline")

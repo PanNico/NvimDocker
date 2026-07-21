@@ -1,4 +1,3 @@
--- /root/.config/nvim/lua/user/init.lua
 -- Custom initialization sequence
 
 require("user.keymaps")

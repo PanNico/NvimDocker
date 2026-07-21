@@ -1,4 +1,3 @@
--- /root/.config/nvim/lua/user/plugins.lua
 -- Plugin specification table for lazy.nvim
 -- Add plugins here using declarative syntax
 

@@ -1,4 +1,3 @@
--- /root/.config/nvim/lua/system/lazy.lua
 -- lazy.nvim bootstrap and setup
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

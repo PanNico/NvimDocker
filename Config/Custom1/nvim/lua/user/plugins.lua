@@ -1,4 +1,3 @@
--- /root/.config/nvim/lua/user/plugins.lua
 -- Plugin specification for lazy.nvim
 
 return {
