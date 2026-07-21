@@ -117,6 +117,26 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       vim.lsp.enable('clangd')
+      vim.lsp.enable('vimtex_ls')  -- LSP per LaTeX
+    end
+  },
+
+  -- Vimtex
+  {
+    "lervag/vimtex",
+    ft = "tex",
+    init = function()
+      vim.g.vimtex_view_method = "zathura"
+      vim.g.vimtex_compiler_method = "latexmk"
+      vim.g.vimtex_quickfix_mode = 2  -- apri quickfix su errori
+      vim.g.vimtex_compiler_latexmk = {
+        out_dir = "out",
+        options = {
+          '-interaction=nonstopmode',
+          '-pdf',
+          '-shell-escape',
+        },
+      }
     end
   },
 }

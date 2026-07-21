@@ -3,8 +3,8 @@
 set -e
 
 # Configuration
-BASE_BUILD="${BASE_BUILD:-nvim_test_t1}"
-CUSTOM_BUILD="${CUSTOM_BUILD:-nvim_test_t2}"
+BASE_BUILD="${BASE_BUILD:-nvim_base_img}"
+CUSTOM_BUILD="${CUSTOM_BUILD:-nvim_work1}"
 
 # Colors for output
 RED='\033[0;31m'

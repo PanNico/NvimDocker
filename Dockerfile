@@ -25,7 +25,17 @@ RUN apt update && apt install -y \
     libunibilium-dev libluajit-5.1-dev lua-bitop-dev \
     silversearcher-ag ripgrep fd-find \
     xclip xsel vim-tiny tree\
-    gdb \
+    gdb bash-completion \
+    texlive-xetex \
+    texlive-fonts-recommended \
+    texlive-fonts-extra \
+    texlive-latex-recommended \
+    texlive-latex-extra \
+    texlive-science \
+    latexmk \
+    pandoc \
+    zathura \
+    ghostscript \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Go

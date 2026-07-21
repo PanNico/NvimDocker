@@ -71,3 +71,31 @@ vim.cmd([[
     \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
     \gVzv:call setreg('"', old_reg, old_regtype)<CR>
 ]])
+
+
+-- LaTeX keymaps
+
+-- Compila il documento (continuous mode)
+Map("n", "<leader>lb", ":VimtexCompile<CR>", { desc = "LaTeX build" })
+
+-- Ferma la compilazione
+Map("n", "<leader>ls", ":VimtexStop<CR>", { desc = "LaTeX stop build" })
+
+-- Apri il PDF con Zathura (silenzioso, redirect a /dev/null)
+Map("n", "<leader>lv", function()
+  local pdf_path = vim.fn.expand('%:p:h') .. '/out/' .. vim.fn.expand('%:t:r') .. '.pdf'
+  if vim.fn.filereadable(pdf_path) == 1 then
+    os.execute('zathura "' .. pdf_path .. '" >/dev/null 2>&1 &')
+  else
+    print("PDF not found: " .. pdf_path)
+  end
+end, { desc = "LaTeX view PDF" })
+
+-- Pulisci i file ausiliari
+Map("n", "<leader>lc", ":VimtexClean<CR>", { desc = "LaTeX clean" })
+
+-- Mostra/nascondi l'indice (Table of Contents)
+Map("n", "<leader>lt", ":VimtexTocToggle<CR>", { desc = "LaTeX TOC" })
+
+-- Mostra gli errori di compilazione
+Map("n", "<leader>le", ":VimtexErrors<CR>", { desc = "LaTeX errors" })

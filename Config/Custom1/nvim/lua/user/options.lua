@@ -32,3 +32,4 @@ vim.opt.fileencoding = "utf-8"
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 vim.opt.showmode = false
+
