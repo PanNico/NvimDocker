@@ -1,8 +1,6 @@
 #!/bin/bash
-# build-images.sh
-# Builds both base and custom Neovim Docker images
 
-set -e  # Exit on any error
+set -e
 
 # Configuration
 BASE_BUILD="${BASE_BUILD:-nvim_test_t1}"
@@ -14,7 +12,6 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-# Functions
 log_info() {
     echo -e "${GREEN}[INFO]${NC} $1"
 }
