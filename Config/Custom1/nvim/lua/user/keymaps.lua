@@ -41,10 +41,11 @@ Map("n", "<C-d>", ":lua vim.diagnostic.open_float()<CR>")
 
 -- Toggleterm maps (fixed)
 Map("n", "<C-\\>", ":ToggleTerm<CR>")           -- Apri/chiudi terminale floating (già configuato come default)
-Map("n", "<leader>/", ":TermNew direction=horizontal<CR>")  -- Orizzontale (leader+t+h)
-Map("n", "<leader>.", ":TermNew direction=vertical<CR>")    -- Verticale (leader+t+v)
-Map("n", "<C-f>", ":TermNew direction=float<CR>")       -- Floating (leader+t+f)
-Map("n", "<leader>ts", ":TermSelect<CR>")                       -- Seleziona terminale (leader+t+s)
+Map("n", "<leader>/", ":TermNew direction=horizontal<CR>")
+Map("n", "<leader>.", ":TermNew direction=vertical<CR>")
+Map("n", "<leader>,", ":TermNew direction=tab<CR>")
+Map("n", "<C-f>", ":TermNew direction=float<CR>")
+Map("n", "<leader>ts", ":TermSelect<CR>")
 
 -- Terminali numerici
 Map("n", "<leader>t1", ":1ToggleTerm<CR>")
@@ -52,7 +53,7 @@ Map("n", "<leader>t2", ":2ToggleTerm<CR>")
 Map("n", "<leader>t3", ":3ToggleTerm<CR>")
 
 -- Terminal mode: esci con <Esc><Esc>
-Map("t", "<Esc><Esc>", [[<C-\><C-n>]])
+Map("t", "<C-Esc>", [[<C-\><C-n>]])
 
 -- Search selected text (from old init.vim)
 -- Press * to search forwards, # to search backwards
