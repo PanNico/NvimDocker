@@ -1,22 +1,22 @@
--- Feline statusline configuration
+-- Feline statusline configuration (TokyoNight colors)
 
 local line_ok, feline = pcall(require, "feline")
 if not line_ok then
   return
 end
 
-local one_monokai = {
-  fg = "#abb2bf",
-  bg = "#1e2024",
-  green = "#98c379",
-  yellow = "#e5c07b",
-  purple = "#c678dd",
-  orange = "#d19a66",
-  peanut = "#f6d5a4",
-  red = "#e06c75",
-  aqua = "#61afef",
-  darkblue = "#282c34",
-  dark_red = "#f75f5f",
+local tokyonight = {
+  fg = "#c0caf5",
+  bg = "#1a1b26",
+  green = "#9ece6a",
+  yellow = "#e0af68",
+  purple = "#9d7cd8",
+  orange = "#ff9e64",
+  peanut = "#e0af68",
+  red = "#f7768e",
+  aqua = "#7dcfff",
+  darkblue = "#414868",
+  dark_red = "#f7768e",
 }
 
 local vi_mode_colors = {
@@ -229,6 +229,6 @@ local components = {
 
 feline.setup({
   components = components,
-  theme = one_monokai,
+  theme = tokyonight,
   vi_mode_colors = vi_mode_colors,
 })
