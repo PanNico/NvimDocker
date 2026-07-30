@@ -189,7 +189,6 @@ local c = {
 }
 
 local right = {
-  c.gitBranch,
   c.gitDiffAdded,
   c.gitDiffRemoved,
   c.gitDiffChanged,
@@ -208,6 +207,7 @@ local middle = {
 
 local left = {
   c.vim_mode,
+  c.gitBranch,
   c.nvim_tree_label,
 }
 
