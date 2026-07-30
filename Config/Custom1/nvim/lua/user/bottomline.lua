@@ -113,6 +113,15 @@ local c = {
     right_sep = " ",
     enabled = function() return vim.bo.filetype ~= "NvimTree" end,
   },
+  nvim_tree_fullpath = {
+    provider = function()
+      if vim.bo.filetype == "NvimTree" then
+        return " " .. vim.fn.getcwd() .. " "
+      end
+      return ""
+    end,
+    hl = { fg = "aqua", bg = "darkblue", style = "bold" },
+  },
   diagnostic_errors = {
     provider = "diagnostic_errors",
     hl = { fg = "red" },
@@ -189,6 +198,7 @@ local right = {
 }
 
 local middle = {
+  c.nvim_tree_fullpath,
   c.fileinfo,
   c.diagnostic_errors,
   c.diagnostic_warnings,
