@@ -139,4 +139,25 @@ return {
       }
     end
   },
+
+  -- Gitsigns
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "BufReadPost",
+    config = function()
+      require("gitsigns").setup({
+        signs = {
+          add = { text = "+" },
+          change = { text = "~" },
+          delete = { text = "_" },
+          topdelete = { text = "‾" },
+          changedelete = { text = "~" },
+        },
+        current_line_blame = false,  -- Disable se vuoi performance
+        numhl = false,
+        linehl = false,
+        word_diff = false,
+      })
+    end
+  },
 }
