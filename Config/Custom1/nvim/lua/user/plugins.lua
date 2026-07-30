@@ -131,6 +131,7 @@ return {
           complete_unimported = true,
           clangd_file_status = true,
         },
+        capabilities = vim.lsp.protocol.make_client_capabilities(),
       })
       vim.lsp.enable('clangd')
       vim.lsp.enable('vimtex_ls')  -- LSP per LaTeX

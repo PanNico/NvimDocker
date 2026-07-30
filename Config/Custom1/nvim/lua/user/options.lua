@@ -33,6 +33,8 @@ vim.opt.fileencoding = "utf-8"
 vim.opt.termguicolors = true
 vim.opt.showmode = false
 
+vim.opt.list = true
+
 vim.opt.listchars = {
     tab = '» ',
 --    trail = '.',
@@ -42,4 +44,3 @@ vim.opt.listchars = {
     space = '·',  -- Optional: define a character for spaces
 }
 
-vim.opt.list = true
