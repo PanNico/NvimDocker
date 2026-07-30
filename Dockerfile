@@ -36,6 +36,7 @@ RUN apt update && apt install -y \
     pandoc \
     zathura \
     ghostscript \
+    clang-format \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Go
