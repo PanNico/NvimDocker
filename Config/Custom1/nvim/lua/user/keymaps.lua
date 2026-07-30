@@ -100,3 +100,15 @@ Map("n", "<leader>lt", ":VimtexTocToggle<CR>", { desc = "LaTeX TOC" })
 
 -- Mostra gli errori di compilazione
 Map("n", "<leader>le", ":VimtexErrors<CR>", { desc = "LaTeX errors" })
+
+-- LSP Keymaps
+Map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+Map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+Map("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+Map("n", "gr", vim.lsp.buf.references, { desc = "Go to references" })
+Map("n", "K", vim.lsp.buf.hover, { desc = "Show documentation (hover)" })
+Map("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature help" })
+Map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
+Map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
+Map("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+Map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })

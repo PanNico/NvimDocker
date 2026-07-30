@@ -116,6 +116,22 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
+      -- Abilita clangd con opzioni avanzate
+      vim.lsp.config('clangd', {
+        cmd = {
+          "clangd",
+          "--background-index",
+          "--suggest-missing-includes",
+          "--clang-tidy",
+          "--header-insertion=iwyu",
+          "--all-scopes-completion",
+        },
+        init_options = {
+          use_placeholders = true,
+          complete_unimported = true,
+          clangd_file_status = true,
+        },
+      })
       vim.lsp.enable('clangd')
       vim.lsp.enable('vimtex_ls')  -- LSP per LaTeX
     end
