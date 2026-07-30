@@ -186,6 +186,11 @@ local c = {
     end,
     hl = { fg = "aqua", bg = "darkblue", style = "bold" },
   },
+  spacer = {
+    provider = function() return " " end,
+    hl = { bg = "bg" },  -- sfondo trasparente (uguale al bg del tema)
+    enabled = function() return vim.bo.filetype ~= "NvimTree" end,
+  },
 }
 
 local right = {
@@ -209,6 +214,7 @@ local left = {
   c.vim_mode,
   c.gitBranch,
   c.nvim_tree_label,
+  c.spacer,
 }
 
 local components = {
