@@ -120,24 +120,24 @@ local function lsp_floating_location(method)
     vim.api.nvim_win_set_cursor(win, { start_line + 1, range.start.character })
 
     -- Mappa 'q' e <Esc> per chiudere la finestra
-    vim.keymap.set("n", "q", ":close<CR>", { buffer = bufnr, silent = true, nowait = true })
-    vim.keymap.set("n", "<Esc>", ":close<CR>", { buffer = bufnr, silent = true, nowait = true })
-
-    -- Mappa 'a' per aprire il file in una nuova tab
-    vim.keymap.set("n", "a", function()
-      vim.api.nvim_win_close(win, true)
-      vim.cmd("tabnew")
-      vim.api.nvim_set_current_buf(bufnr)
-      vim.api.nvim_win_set_cursor(0, { start_line + 1, range.start.character })
-      local empty_bufs = vim.tbl_filter(function(b)
-        return vim.api.nvim_buf_is_loaded(b) and vim.api.nvim_buf_get_name(b) == ""
-      end, vim.api.nvim_list_bufs())
-      for _, eb in ipairs(empty_bufs) do
-        if eb ~= bufnr then
-          vim.api.nvim_buf_delete(eb, { force = true })
-        end
-      end
-    end, { buffer = bufnr, silent = true, nowait = true })
+--    vim.keymap.set("n", "q", ":close<CR>", { buffer = bufnr, silent = true, nowait = true })
+--    vim.keymap.set("n", "<Esc>", ":close<CR>", { buffer = bufnr, silent = true, nowait = true })
+--
+--    -- Mappa 'a' per aprire il file in una nuova tab
+--    vim.keymap.set("n", "a", function()
+--      vim.api.nvim_win_close(win, true)
+--      vim.cmd("tabnew")
+--      vim.api.nvim_set_current_buf(bufnr)
+--      vim.api.nvim_win_set_cursor(0, { start_line + 1, range.start.character })
+--      local empty_bufs = vim.tbl_filter(function(b)
+--        return vim.api.nvim_buf_is_loaded(b) and vim.api.nvim_buf_get_name(b) == ""
+--      end, vim.api.nvim_list_bufs())
+--      for _, eb in ipairs(empty_bufs) do
+--        if eb ~= bufnr then
+--          vim.api.nvim_buf_delete(eb, { force = true })
+--        end
+--      end
+--    end, { buffer = bufnr, silent = true, nowait = true })
 
     -- Mappa 'e' per sostituire il buffer corrente
     vim.keymap.set("n", "e", function()
