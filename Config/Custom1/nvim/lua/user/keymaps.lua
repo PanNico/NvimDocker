@@ -1,3 +1,5 @@
+local terminal = require("user.terminal")
+
 -- Key mappings helper function
 
 local function Map(mode, lhs, rhs, opts)
@@ -36,17 +38,25 @@ Map("n", "fg", builtin.live_grep)
 Map("n", "fb", builtin.buffers)
 Map("n", "fh", builtin.help_tags)
 
+Map("n", "<C-d>", ":lua vim.diagnostic.open_float()<CR>")
+
 -- Toggleterm maps (custom)
-Map("n", "<C-\\>", ":ToggleTerm<CR>")           -- Terminale floating
-Map("n", "<leader>th", ":ToggleTerm direction=horizontal<CR>")  -- Split orizzontale
-Map("n", "<leader>tv", ":ToggleTerm direction=vertical<CR>")    -- Split verticale
-Map("n", "<leader>tf", ":ToggleTerm direction=float<CR>")       -- Floating
+Map("n", "<leader>th", terminal.new_horizontal )  -- Split orizzontale
+Map("n", "<leader>tv", terminal.new_vertical)    -- Split verticale
+Map("n", "<leader>tf", terminal.new_float )       -- Floating
+Map("n", "<leader>tt", terminal.new_tab)       -- tab
 Map("n", "<leader>ts", ":TermSelect<CR>")                       -- Seleziona terminale
 
 -- Terminali numerici
-Map("n", "<leader>t1", ":1ToggleTerm<CR>")
-Map("n", "<leader>t2", ":2ToggleTerm<CR>")
-Map("n", "<leader>t3", ":3ToggleTerm<CR>")
+Map("n", "t", function()
+  local count = vim.v.count
+
+  if count == 0 then
+    vim.cmd("ToggleTerm")
+  else
+    vim.cmd(count .. "ToggleTerm")
+  end
+end, { desc = "Toggle terminal" })
 
 -- Terminal mode: esci con <Esc><Esc>
 Map("t", "<Esc><Esc>", [[<C-\><C-n>]])
